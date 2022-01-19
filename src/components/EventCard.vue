@@ -1,37 +1,100 @@
 <template>
-  <div class="picture-card">
-    <!-- display picture data -->
-    <span>{{ picture.date }}</span>
-    <h4>{{ picture.title }}</h4>
-    <img :src="picture.url" />
-    <p>{{ picture.explanation }}</p>
-    <div v-on:click="() => $emit('like', picture)">
-      <font-awesome-icon v-if="!picture.isLiked" :icon="['far', 'heart']" />
-      <font-awesome-icon v-else :icon="['fas', 'heart']" />
+  <div class="card-container">
+    <div class="picture-card">
+      <!-- display picture data -->
+      <div class="photo-container">
+        <span>{{ picture.date }}</span>
+        <h4>{{ picture.title }}</h4>
+        <img :src="picture.url" />
+      </div>
+      <div class="explanation-container">
+        <div>
+          <span v-if="!readMoreActivated">{{ longText.slice(0, 100) }}</span>
+          <a
+            class="read-more"
+            v-if="!readMoreActivated"
+            v-on:click="activateReadMore()"
+            href="#"
+            >Read More</a
+          >
+          <span v-else>{{ longText }}</span>
+        </div>
+        <div class="isLikedIcon" v-on:click="() => $emit('like', picture)">
+          <font-awesome-icon
+            id="emptyIcon"
+            v-if="!picture.isLiked"
+            :icon="['far', 'heart']"
+          />
+          <font-awesome-icon id="fulledIcon" v-else :icon="['fas', 'heart']" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "PictureCard",
+  name: 'PictureCard',
   props: {
     picture: Object,
   },
-};
+  data() {
+    return {
+      longText: this.picture.explanation,
+      readMoreActivated: false,
+    }
+  },
+  methods: {
+    activateReadMore: function () {
+      if (!this.readMoreActivated) {
+        this.readMoreActivated = true
+      } else {
+        this.readMoreActivated = false
+      }
+    },
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.picture-card img {
+  max-width: 30em;
+  min-width: 30em;
+  height: 30em;
+}
+
 .picture-card {
-  box-sizing: content-box;
+  max-width: 30em;
+  max-height: 80em;
   cursor: pointer;
   border: 1px solid black;
   margin-bottom: 18px;
+  overflow: hidden;
 }
 
 .picture-card:hover {
   transform: scale(1.01);
   box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+}
+
+.explanation-container {
+  column-gap: 2rem;
+  font-size: 1.2rem;
+  margin: 1rem;
+  text-align: left;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+.isLikedIcon {
+  font-size: 1.2em;
+  text-align: right;
+}
+
+#fulledIcon {
+  color: #dc143c;
 }
 </style>
