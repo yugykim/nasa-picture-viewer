@@ -99,7 +99,7 @@ h4 {
 }
 
 #fulledIcon {
-  color: #FF10F0;
+  color: #0FFF50;
 }
 
 .read-more {
