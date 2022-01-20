@@ -5,6 +5,7 @@ Live Demo: https://yugykim.github.io/nasa-picture-viewer/#/
 
 
 ## Features
+- set the reloading button on the website logo(name), displaying New images on the website. 
 - Loading animations
 - Like and Unlike button
 
