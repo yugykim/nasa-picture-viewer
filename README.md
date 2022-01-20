@@ -1,24 +1,20 @@
 # nasa-search-vue
+- This webpage that pulls images from Nasa's "Picture of The day"API. Every cards included the title, date, image, and allowes the user to click like or unlike button.
+My application for Shopify Summer 2022 Frontend Developer Intern position
+Live Demo: https://yugykim.github.io/nasa-picture-viewer/#/
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Features
+- Loading animations
+- Like and Unlike button
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Core Features
+- Pulled Nasa pictured of the day API
+- Display picture, and the picture's explanation, titile and date.
+- Responsive to different screen sizes, and mobile
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Tech Stack
+- JavaScriipt
+- Vue2
+- Nasa Pictures of the day API
