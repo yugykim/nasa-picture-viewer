@@ -3,9 +3,7 @@
     <Loading v-if="loadingOn"/>
     <div v-else class="heading">
       <div class="menu">
-        <div class="logo">
-          <h1><a href="https://yugykim.github.io/nasa-picture-viewer/#/">NASABOOK</a></h1>
-        </div>
+        <div class="logo" v-on:click="getPhotos()">NASABOOK</div>
         <div id="nav">
           <p>Shopify Frontend Developer Intern Challenge</p>
           <h2><a href="https://github.com/yugykim/nasa-picture-viewer" >Yugy Kim</a></h2>
@@ -48,9 +46,13 @@ export default {
     }
   },
   mounted() {
-    axios
+    this.getPhotos();
+  },
+  methods: {
+    getPhotos: function() {
+      axios
       .get(
-        'https://api.nasa.gov/planetary/apod?api_key=GXp4n1FXuapHYjGSdvy76UaQMi4i8WNSe0HZ5U5W&count=12'
+        'https://api.nasa.gov/planetary/apod?api_key=GXp4n1FXuapHYjGSdvy76UaQMi4i8WNSe0HZ5U5W&count=6'
       )
       .then((response) => {
         const nasaData = response.data.map((object) => {
@@ -66,8 +68,8 @@ export default {
         this.errored = true
       })
       .finally(() => this.loadingOn = false)
-  },
-  methods: {
+    },
+
     onLike: function (picture) {
       picture.isLiked = !picture.isLiked
     }
@@ -93,7 +95,8 @@ export default {
   margin: 0 auto;
   padding: 0;
 }
-.logo a {
+.logo {
+  cursor: pointer;
   color: whitesmoke;
   font-size: 5rem;
   text-decoration: none;
@@ -129,7 +132,7 @@ export default {
     align-content: center;
   }
 
-  .logo a{
+  .logo{
     text-align: center;
     font-size: 3.5rem;
   }
