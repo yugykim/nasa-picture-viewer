@@ -1,5 +1,17 @@
 <template>
   <div class="home">
+    <Loading v-if="loadingOn"/>
+    <div v-else class="heading">
+      <div class="menu">
+        <div class="logo">
+          <h1><a href="https://yugykim.github.io/Nasa_API_Yugy.github.io/#/">NASABOOK</a></h1>
+        </div>
+        <div id="nav">
+          <p>Shopify Frontend Developer Intern Challenge</p>
+          <h2><a href="https://github.com/yugykim/nasa-picture-viewer" >Yugy Kim</a></h2>
+        </div>
+      </div>
+    </div>
     <div class="pictures">
       <EventCard
         v-for="picture in pictures"
@@ -7,43 +19,32 @@
         :picture="picture"
         v-on:like="onLike"
       />
-      <footer>
-        <h1>Shopify Frontend Developer Intern Challenge</h1>
-        <h2>Yugy Kim</h2>
-        <a href="https://github.com/yugykim/Nasa_API"
-          ><img :src="image.github"
-        /></a>
-        <a href="https://www.linkedin.com/in/yugyeong-kim-20a16b225/"
-          ><img :src="image.linkedin"
-        /></a>
-        <a href="https://www.yugyportfolio.com"
-          ><img :src="image.portfolio"
-        /></a>
-      </footer>
     </div>
   </div>
 </template>
 
 <script>
 import EventCard from '@/components/EventCard.vue'
+import Loading from '@/components/loading.vue'
 import axios from 'axios'
 
 export default {
   name: 'Home',
   components: {
-    EventCard,
+    EventCard,Loading
   },
   data() {
     return {
-      pictures: {},
+      pictures: [],
+      query: 'Erik',
       errored: false,
-      loading: true,
+      loadingOn: true,
       showContent: false,
       image: {
         github: require('../components/assets/github-2.png'),
         linkedin: require('../components/assets/linkedin-2.png'),
         portfolio: require('../components/assets/portfolio.png'),
-      },
+      }
     }
   },
   mounted() {
@@ -64,17 +65,78 @@ export default {
         console.log(error)
         this.errored = true
       })
-      .finally(() => (this.loading = false))
+      .finally(() => this.loadingOn = false)
   },
   methods: {
     onLike: function (picture) {
       picture.isLiked = !picture.isLiked
-    },
+    }
   },
 }
 </script>
 
 <style scoped>
+
+.heading, .pictures {
+  background-color: black
+}
+
+.heading {
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+  padding: 5rem;
+}
+
+.menu {
+  display: flex;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.logo a {
+  color: #0FFF50;
+  font-size: 5rem;
+  text-decoration: none;
+}
+
+#nav {
+  font-size: 1.5rem;
+  color: white;
+}
+
+#nav a {
+  text-decoration: none;
+  color: #1F51FF;
+}
+
+
+.menu :nth-child(1) {
+  margin-right: auto;
+}
+
+.menu :nth-last-child(2) {
+  margin-right: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .heading {
+    padding: 2em;
+  }
+
+  .menu {
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .logo a{
+    text-align: center;
+    font-size: 3.5rem;
+  }
+
+}
+
+
 .pictures {
   display: flex;
   flex-direction: row;
@@ -84,14 +146,6 @@ export default {
   gap: 1rem;
 }
 
-footer {
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  padding: 5em;
-  border-top: 1px solid black;
-}
 
 a {
   margin: 1rem;
@@ -102,15 +156,4 @@ img {
   width: 50px;
 }
 
-@media screen and (max-width: 767px) {
-  footer {
-    text-align: center;
-    padding: 2em;
-    font-size: 10px;
-  }
-
-  h2 {
-    font-size: 30px;
-  }
-}
 </style>

@@ -1,11 +1,15 @@
 <template>
-  <div class="favorite">
+  <div class="Favorite">
     <h1>Favorite</h1>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Favorite',
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -15,7 +15,7 @@
             v-if="!readMoreActivated"
             v-on:click="activateReadMore()"
             href="#"
-            >Read More</a
+            >     Read More    </a
           >
           <span v-else>{{ longText }}</span>
         </div>
@@ -58,6 +58,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.card-container {
+  color: white;
+}
+
 .picture-card img {
   max-width: 30em;
   min-width: 30em;
@@ -75,7 +79,7 @@ export default {
 
 .picture-card:hover {
   transform: scale(1.01);
-  box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 80px 200px 0 rgba(6, 243, 223, 0.2);
 }
 
 .explanation-container {
@@ -90,11 +94,27 @@ h4 {
 }
 
 .isLikedIcon {
-  font-size: 1.2em;
+  font-size: 2em;
   text-align: right;
 }
 
 #fulledIcon {
-  color: #dc143c;
+  color: #FF10F0;
 }
+
+.read-more {
+  text-decoration: none;
+  color: #1F51FF;
+}
+
+@media screen and (max-width: 767px) {
+  .picture-card img {
+    max-width: 25em;
+  }
+
+  .picture-card {
+    max-width: 25em;
+  }
+}
+
 </style>
