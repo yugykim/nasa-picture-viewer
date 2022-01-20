@@ -94,7 +94,7 @@ export default {
   padding: 0;
 }
 .logo a {
-  color: #0FFF50;
+  color: whitesmoke;
   font-size: 5rem;
   text-decoration: none;
 }
