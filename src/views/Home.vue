@@ -4,7 +4,7 @@
     <div v-else class="heading">
       <div class="menu">
         <div class="logo">
-          <h1><a href="https://yugykim.github.io/Nasa_API_Yugy.github.io/#/">NASABOOK</a></h1>
+          <h1><a href="https://yugykim.github.io/nasa-picture-viewer/#/">NASABOOK</a></h1>
         </div>
         <div id="nav">
           <p>Shopify Frontend Developer Intern Challenge</p>
