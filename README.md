@@ -12,7 +12,7 @@ Live Demo: https://yugykim.github.io/nasa-picture-viewer/#/
 
 
 ### Core Features
-- Pulled Nasa pictured of the day API
+- Pulled Nasa picture of the day API
 - Display picture, and the picture's explanation, titile and date.
 - Responsive to different screen sizes, and mobile
 - Reloading button to pull more images from NASA's "Picture of the Day"API
