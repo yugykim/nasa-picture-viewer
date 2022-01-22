@@ -109,11 +109,11 @@ h4 {
 
 @media screen and (max-width: 767px) {
   .picture-card img {
-    max-width: 25em;
+    max-width: 23em;
   }
 
   .picture-card {
-    max-width: 25em;
+    max-width: 23em;
   }
 }
 
