@@ -9,7 +9,7 @@ Live Demo: https://yugykim.github.io/nasa-picture-viewer/#/
 - Loading animations
 - Like and Unlike button
 - ReadMore Button
-
+- Infinite Scrolling in Vue using the Vue Intersection Observer API
 
 ### Core Features
 - Pulled Nasa picture of the day API
