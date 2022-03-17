@@ -83,11 +83,7 @@ export default {
 </script>
 
 <style scoped>
-.heading, .pictures {
-  background-color: black; 
-}
 .heading {
-  border-bottom: 1px solid black;
   box-sizing: border-box;
   padding: 5rem;
 }
@@ -99,17 +95,17 @@ export default {
 }
 .logo {
   cursor: pointer;
-  color: whitesmoke;
+  color: #2c3e50;
   font-size: 5rem;
   text-decoration: none;
 }
 #nav {
   font-size: 1.5rem;
-  color: white;
+  color: #2c3e50;
 }
 #nav a {
   text-decoration: none;
-  color: #1F51FF;
+  color: #2c3e50;
 }
 .menu :nth-child(1) {
   margin-right: auto;

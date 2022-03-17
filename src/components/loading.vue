@@ -15,7 +15,7 @@ export default {
 
 .loading {
   align-items: center;
-  background-color: #1D1F20;
+  background-color: white;
   display: flex;
   justify-content: center;
   height: 100vh;
@@ -37,14 +37,14 @@ export default {
 }
 .loader:before {
   animation: ball1 1s infinite;  
-  background-color: #0FFF50;
+  background-color: #009000;
   box-shadow: 30px 0 0 white;
   margin-bottom: 10px;
 }
 .loader:after {
   animation: ball2 1s infinite; 
-  background-color: #1F51FF;
-  box-shadow: 30px 0 0 #FF10F0;
+  background-color: #6ca0dc;
+  box-shadow: 30px 0 0 #ff007f;
 }
 
 @keyframes rotate {

@@ -59,7 +59,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .card-container {
-  color: white;
+  color: #2c3e50;
 }
 
 .picture-card img {
@@ -72,7 +72,6 @@ export default {
   max-width: 30em;
   max-height: 80em;
   cursor: pointer;
-  border: 1px solid black;
   margin-bottom: 18px;
   overflow: hidden;
 }
@@ -99,7 +98,7 @@ h4 {
 }
 
 #fulledIcon {
-  color: #0FFF50;
+  color: #009000;
 }
 
 .read-more {
