@@ -1,6 +1,5 @@
 # nasa-search-vue
 - This webpage that pulls images from Nasa's "Picture of The day"API. Every cards included the title, date, image, and allowes the user to click like or unlike button.
-My application for Shopify Summer 2022 Frontend Developer Intern position
 Live Demo: https://yugykim.github.io/nasa-picture-viewer/#/
 
 
