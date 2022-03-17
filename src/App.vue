@@ -11,7 +11,6 @@
 
 <script>
 import Home from './views/Home.vue'
-
 export default {
   name: 'App',
   components: {
@@ -29,7 +28,6 @@ export default {
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -39,5 +37,4 @@ export default {
   font-family: 'Play', sans-serif;
   box-sizing: border-box;
 }
-
 </style>

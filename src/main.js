@@ -5,6 +5,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHeart as filledHeart } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import VueObserveVisivility from 'vue-observe-visibility'
+
+Vue.use(VueObserveVisivility)
 
 library.add(filledHeart)
 library.add(faHeart)

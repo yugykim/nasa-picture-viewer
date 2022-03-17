@@ -5,7 +5,6 @@
       <div class="menu">
         <div class="logo" v-on:click="getPhotos()">NASABOOK</div>
         <div id="nav">
-          <p>Shopify Frontend Developer Intern Challenge</p>
           <h2><a href="https://github.com/yugykim/nasa-picture-viewer" >Yugy Kim</a></h2>
         </div>
       </div>
@@ -18,6 +17,8 @@
         v-on:like="onLike"
       />
     </div>
+
+    <div v-if="pictures.length" v-observe-visibility="handleScrolledToBottom"></div>
   </div>
 </template>
 
@@ -38,11 +39,12 @@ export default {
       errored: false,
       loadingOn: true,
       showContent: false,
+      page: 1,
       image: {
         github: require('../components/assets/github-2.png'),
         linkedin: require('../components/assets/linkedin-2.png'),
         portfolio: require('../components/assets/portfolio.png'),
-      }
+      } 
     }
   },
   mounted() {
@@ -58,10 +60,8 @@ export default {
         const nasaData = response.data.map((object) => {
           return { ...object, isLiked: false }
         })
-
         console.log(nasaData)
-
-        this.pictures = nasaData
+        this.pictures.push(...nasaData);
       })
       .catch((error) => {
         console.log(error)
@@ -69,26 +69,28 @@ export default {
       })
       .finally(() => this.loadingOn = false)
     },
-
-    onLike: function (picture) {
+    onLike: function (picture) { 
       picture.isLiked = !picture.isLiked
+    },
+    handleScrolledToBottom (isVisible){
+      if (!isVisible){ return }
+      this.page++
+
+      this.getPhotos();
     }
   },
 }
 </script>
 
 <style scoped>
-
 .heading, .pictures {
-  background-color: black
+  background-color: black; 
 }
-
 .heading {
   border-bottom: 1px solid black;
   box-sizing: border-box;
   padding: 5rem;
 }
-
 .menu {
   display: flex;
   list-style: none;
@@ -101,45 +103,34 @@ export default {
   font-size: 5rem;
   text-decoration: none;
 }
-
 #nav {
   font-size: 1.5rem;
   color: white;
 }
-
 #nav a {
   text-decoration: none;
   color: #1F51FF;
 }
-
-
 .menu :nth-child(1) {
   margin-right: auto;
 }
-
 .menu :nth-last-child(2) {
   margin-right: auto;
 }
-
 @media screen and (max-width: 767px) {
   .heading {
     padding: 2em;
   }
-
   .menu {
     flex-direction: column;
     justify-content: center;
     align-content: center;
   }
-
   .logo{
     text-align: center;
     font-size: 3.5rem;
   }
-
 }
-
-
 .pictures {
   display: flex;
   flex-direction: row;
@@ -148,15 +139,11 @@ export default {
   justify-content: center;
   gap: 1rem;
 }
-
-
 a {
   margin: 1rem;
   color: black;
 }
-
 img {
   width: 50px;
 }
-
 </style>
