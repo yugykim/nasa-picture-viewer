@@ -5,7 +5,7 @@
       <div class="photo-container">
         <span>{{ picture.date }}</span>
         <h4>{{ picture.title }}</h4>
-        <img :src="picture.url" />
+        <img :src="picture.url"/>
       </div>
       <div class="explanation-container">
         <div>
@@ -15,8 +15,9 @@
             v-if="!readMoreActivated"
             v-on:click="activateReadMore()"
             href="#"
-            >     Read More    </a
-          >
+            >  
+               Read More    
+          </a>
           <span v-else>{{ longText }}</span>
         </div>
         <div class="isLikedIcon" v-on:click="() => $emit('like', picture)">
@@ -51,7 +52,7 @@ export default {
       } else {
         this.readMoreActivated = false
       }
-    },
+    }
   },
 }
 </script>
@@ -63,17 +64,12 @@ export default {
 }
 
 .picture-card img {
-  max-width: 30em;
-  min-width: 30em;
-  height: 30em;
+  width: 100%;
 }
 
 .picture-card {
-  max-width: 30em;
-  max-height: 80em;
+  width: 30vw;
   cursor: pointer;
-  margin-bottom: 18px;
-  overflow: hidden;
 }
 
 .picture-card:hover {
@@ -106,13 +102,19 @@ h4 {
   color: #1F51FF;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1400px) {
+  .picture-card {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 844px) {
   .picture-card img {
-    max-width: 23em;
+    width: 100%;
   }
 
   .picture-card {
-    max-width: 23em;
+    width: 100%;
   }
 }
 

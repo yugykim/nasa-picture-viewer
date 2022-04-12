@@ -1,11 +1,15 @@
 <template>
   <div class="home">
-    <Loading v-if="loadingOn"/>
+    <Loading v-if="loadingOn" />
     <div v-else class="heading">
       <div class="menu">
         <div class="logo" v-on:click="getPhotos()">NASABOOK</div>
         <div id="nav">
-          <h2><a href="https://github.com/yugykim/nasa-picture-viewer" >Yugy Kim</a></h2>
+          <h2>
+            <a href="https://github.com/yugykim/nasa-picture-viewer"
+              >Yugy Kim</a
+            >
+          </h2>
         </div>
       </div>
     </div>
@@ -18,7 +22,10 @@
       />
     </div>
 
-    <div v-if="pictures.length" v-observe-visibility="handleScrolledToBottom"></div>
+    <div
+      v-if="pictures.length"
+      v-observe-visibility="handleScrolledToBottom"
+    ></div>
   </div>
 </template>
 
@@ -30,7 +37,8 @@ import axios from 'axios'
 export default {
   name: 'Home',
   components: {
-    EventCard,Loading
+    EventCard,
+    Loading,
   },
   data() {
     return {
@@ -44,39 +52,41 @@ export default {
         github: require('../components/assets/github-2.png'),
         linkedin: require('../components/assets/linkedin-2.png'),
         portfolio: require('../components/assets/portfolio.png'),
-      } 
+      },
     }
   },
   mounted() {
-    this.getPhotos();
+    this.getPhotos()
   },
   methods: {
-    getPhotos: function() {
+    getPhotos: function () {
       axios
-      .get(
-        'https://api.nasa.gov/planetary/apod?api_key=GXp4n1FXuapHYjGSdvy76UaQMi4i8WNSe0HZ5U5W&count=6'
-      )
-      .then((response) => {
-        const nasaData = response.data.map((object) => {
-          return { ...object, isLiked: false }
+        .get(
+          'https://api.nasa.gov/planetary/apod?api_key=GXp4n1FXuapHYjGSdvy76UaQMi4i8WNSe0HZ5U5W&count=6'
+        )
+        .then((response) => {
+          const nasaData = response.data.map((object) => {
+            return { ...object, isLiked: false }
+          })
+          console.log(nasaData)
+          this.pictures.push(...nasaData)
         })
-        console.log(nasaData)
-        this.pictures.push(...nasaData);
-      })
-      .catch((error) => {
-        console.log(error)
-        this.errored = true
-      })
-      .finally(() => this.loadingOn = false)
+        .catch((error) => {
+          console.log(error)
+          this.errored = true
+        })
+        .finally(() => (this.loadingOn = false))
     },
-    onLike: function (picture) { 
+    onLike: function (picture) {
       picture.isLiked = !picture.isLiked
     },
-    handleScrolledToBottom (isVisible){
-      if (!isVisible){ return }
+    handleScrolledToBottom(isVisible) {
+      if (!isVisible) {
+        return
+      }
       this.page++
 
-      this.getPhotos();
+      this.getPhotos()
     }
   },
 }
@@ -122,7 +132,7 @@ export default {
     justify-content: center;
     align-content: center;
   }
-  .logo{
+  .logo {
     text-align: center;
     font-size: 3.5rem;
   }
